@@ -30,7 +30,9 @@ type this Command:- python HASHCat.py
 
 # THAT'S ALL :)
 
+- This Tool By Oseid Aldary
+
 - THANKS FOR USAGE
 
-HAVE A NICE DAY, GOODBYE :) <3
+- HAVE A NICE DAY, GOODBYE :) <3
 
