@@ -20,7 +20,7 @@
 
 type this Command:- python HASHCat.py
 
-  -OR
+  - OR
   
 ./HASHCat.py
 
