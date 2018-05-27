@@ -26,7 +26,14 @@ EXAMPLES:
 Note: Note: if you like save the crack info try [ -O ] and set file name to save info in the file
 
 ex:
-   ./HASHCat.py -H 5d41402abc4b2a76b9719d911017c592 -W /root/Desktop/wordlist.txt -O file.txt """)
+   ./HASHCat.py -H 5d41402abc4b2a76b9719d911017c592 -W /root/Desktop/wordlist.txt -O file.txt 
 
 
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+To Create Some Hash
+
+./HASHCat.py -H md5 -T Python
+
+""")
 

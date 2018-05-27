@@ -60,6 +60,8 @@ parse = optparse.OptionParser(defaultBanner +cor[5]+ """Usage: python ./HASHcat.
 OPTIONS:
        -H <Multi Hash> -W <Wordlist>     ::> This Option For Brute Force Attack On This HASHES [ MD5,SHA1,SHA224,SHA256,SHA384,SHA512 ]
 
+       -H <HashName> -T <Set Text>       ::> This Option For Encodeing Some Text To HASH
+
        -O --output <File Name>           ::> Use This Option If You Like Save The Resulit IN Output File.
 
 +-------------+
@@ -75,6 +77,8 @@ def main():
 								help="\nHASH please !\n")
 	parse.add_option("-W","--wordlist",dest="wordlist",type="string",
 								help="\nWordlist File Please!\n")
+        parse.add_option("-T","--text",dest="dtext",type="string",
+							 help="Enter Some Text To Encodeing To Your Hash\n")
 	parse.add_option("-O","--output",dest="outfile",type="string",
 								help="\nFile Name Please !\n")
 	parse.add_option("-v",action="store_true",dest="ShowVERSION",default=False,
@@ -184,7 +188,37 @@ def main():
 			       sleep(2)
 			       print("Bye :)")
 			       exit()
+	elif options.hash !=None and options.dtext !=None:
+		HASH = options.hash
+		text = options.dtext
+		HASHES = ["md5","MD5","sha1","SHA1","sha224","SHA224","sha256","SHA256","sha384","SHA384","sha512","SHA512"]
+		if HASH in HASHES:
+		   sleep(0.10)
+                   print(colors + "\n[+>]<====================> CONFIG <====================>[<+]\n"+cor[5])
+                   sleep(0.10)
+                   print("[*]:HASH NAME    : "+colors+HASH+cor[5])
+                   sleep(0.10)
+		   print("[*]:Text         : "+colors+text+cor[5])
+                   sleep(0.10)
+		   print(cor[3]+"\n[*]\033[1;33m Hashing......["+cor[4]+text+"\033[1;33m]")
+		   sleep(2.1)
+		   if HASH == "md5" or HASH == "MD5":
+			  hashte = hashlib.md5(text).hexdigest()
+		   elif HASH == "sha1" or HASH == "SHA1":
+                          hashte = hashlib.sha1(text).hexdigest()
+                   elif HASH == "sha224" or HASH == "SHA224":
+                          hashte = hashlib.sha224(text).hexdigest()
+                   elif HASH == "sha256" or HASH == "SHA256":
+                          hashte = hashlib.sha256(text).hexdigest()
+                   elif HASH == "sha384" or HASH == "SHA384":
+                          hashte = hashlib.sha384(text).hexdigest()
+                   elif HASH == "sha512" or HASH == "SHA512":
+                          hashte = hashlib.sha512(text).hexdigest()
+                   print("\033[1;33m[T]\033[1;35m TEXT\033[1;32m=[ \033[1;34m {}\033[1;32m ] \033[1;33m[H] \033[1;36m{}\033[1;32mhash\033[1;35m=[ \033[1;31m{}\033[1;35m ]".format(text,HASH,hashte))
 
+		else:
+		   errorhash()
+		   exit()
         else:
 		print(parse.usage)
 		exit()
