@@ -11,8 +11,6 @@ try:
 except:
 	print("\033[91m[!]\033[32m:Some Modules is Missing In Your\033[m [\033[96mPYTHON\033[m].\n\033[96m[*]\033[91m:\033[32mPlease Update Your Python or redownload ")
 	exit()
-
-import requests
 #------------------------------#
 
 #------------------------------------------ From Core Tool Folder -----------------------------------------#
@@ -229,6 +227,18 @@ def main():
 		   errorhash()
 		   exit(1)
 	elif options.hash !=None and options.ONC:
+              try:
+                import requests
+              except:
+	           print("\n\033[1;31m[\033[1;33m!\033[1;31m]\033[1;33m Error: [\033[1;32m Requests \033[1;37mLibrary\033[1;33m ] Is Not Exist \033[1;31m!!!")
+	           print("\033[1;32m[\033[1;37m*\033[1;32m]\033[1;37m Please Install It Using This \033[1;33mCommand: \033[1;37mpip install requests")
+		   exit(1)
+              try:
+                import json
+              except:
+	           print("\n\033[1;31m[\033[1;33m!\033[1;31m]\033[1;33m Error: [\033[1;32m Json \033[1;37mLibrary\033[1;33m ] Is Not Exist \033[1;31m!!!")
+	           print("\033[1;32m[\033[1;37m*\033[1;32m]\033[1;37m Please Install It Using This \033[1;33mCommand: \033[1;37mpip install simplejson")
+		   exit(1)
 	      try:
 		H = options.hash
 		HASHES = [32,40,56,64,96,128]
