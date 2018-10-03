@@ -14,6 +14,7 @@
          ![online-bruteforce](https://user-images.githubusercontent.com/29546157/46437145-2cec6f80-c74a-11e8-907e-982238f2a951.png)
   
    * Create-HASH:
+   
          ![create-hash](https://user-images.githubusercontent.com/29546157/46437156-3249ba00-c74a-11e8-9bab-a7e26a175b9d.png)
          
 # HOW YOU INSTALL THE TOOL:
