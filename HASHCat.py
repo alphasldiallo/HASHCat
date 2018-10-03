@@ -4,19 +4,23 @@
 #--- IMPORT LIB AND MODULES ---#
 #------------------------------#
 try:
-   import hashlib,optparse
+   import hashlib,optparse,re,socket
    from time import sleep
    from os import system
+   system(" ")
 except:
 	print("\033[91m[!]\033[32m:Some Modules is Missing In Your\033[m [\033[96mPYTHON\033[m].\n\033[96m[*]\033[91m:\033[32mPlease Update Your Python or redownload ")
 	exit()
+
+import requests
 #------------------------------#
 
 #------------------------------------------ From Core Tool Folder -----------------------------------------#
 													   #
 try:													   #
    from Core.banner import banner,colors,cor								   #
-   from Core.examples import examples									   #
+   from Core.examples import examples
+   from Core.api import ONCH as onc									   #
 except:													   #
 	print(cor[3]+"\n[!]:"+cor[5]+"The ["+cor[4]+" Core"+cor[5]+" ]"+cor[3]+"Tool Folder Is Missing!!") #
 	exit()												   #
@@ -24,7 +28,7 @@ except:													   #
 
 #----------------------== VERSION ==-----------------------#
 							   #
-ver = cor[5]+"\nTool Version: [ "+cor[4]+"1.0"+cor[5]+" ]" #
+ver = cor[5]+"\nTool Version: [ "+cor[4]+"2.0"+cor[5]+" ]" #
 							   #
 #----------------------------------------------------------#
 
@@ -33,12 +37,12 @@ ver = cor[5]+"\nTool Version: [ "+cor[4]+"1.0"+cor[5]+" ]" #
 											      #
 def errorhash():									      #
      print(cor[4]+"\n[x]:ERROR"+cor[2]+":"+cor[3]+"Please Enter Any Hash From This Hashes:")  #
-     print(cor[2]+"""1 - MD5
-2 - SHA1
-3 - SHA224
-4 - SHA256
-5 - SHA384
-6 - SHA512 """)										      #
+     print(cor[2]+"""--------------------------------------------->MD5
+--------------------------------------------->SHA1
+--------------------------------------------->SHA224
+--------------------------------------------->SHA256
+--------------------------------------------->SHA384
+--------------------------------------------->SHA512 """)										      #
 											      #
 ###############################################################################################
 
@@ -49,25 +53,29 @@ ___  / / /__    |_  ___/__  / / /_  ____/_____ ___  __/
 __  /_/ /__  /| |____ \__  /_/ /_  /    _  __ `/_  /   
 _  __  / _  ___ |___/ /_  __  / / /___  / /_/ /_  /    
 /_/ /_/  /_/  |_/____/ /_/ /_/  \____/  \__,_/ /_/     
-                                                 V[1.0]
+                                                 V[2.0]
 """
 #-------------------------------------------------------------------------------------#
 
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ MAKE OPTIONS TOOL @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 parse = optparse.OptionParser(defaultBanner +cor[5]+ """Usage: python ./HASHcat.py [Options]
-
-OPTIONS:
-       -H <Multi Hash> -W <Wordlist>     ::> This Option For Brute Force Attack On This HASHES [ MD5,SHA1,SHA224,SHA256,SHA384,SHA512 ]
-
-       -H <HashName> -T <Set Text>       ::> This Option For Encodeing Some Text To HASH
-
-       -O --output <File Name>           ::> Use This Option If You Like Save The Resulit IN Output File.
-
-+-------------+
-|-v --version |::> SHOW TOOL VERSION.
-|-e --examples|::> SHOW TOOL EXAMPLES.
-+-------------+""",version=ver)
+ _________________________________________________________________________________________________________
+|           OPTIONS:			                   Description:					  |
++=========================================================================================================+
+    -H <Multi Hash> -W <Wordlist>  |  Brute Force Attack On HASHES[MD5,SHA1,SHA224,SHA256,SHA384,SHA512]  |
+				   +									  +
+    -H <Multi Hash> --ON	   |  Online Cracking Hash Without Wordlist				  |
+				   +									  +
+    -H <HashName> -T <Set Text>    |  Encode Your Text To HASHES[MD5,SHA1,SHA224,SHA256,SHA384,SHA512]	  |
+				   +									  +
+    -O --output <File Name>        |  Save The Resulit IN Output File.                                    |
+==========================================================================================================+
+    -v --version                   |  SHOW TOOL VERSION  ||
+				   +			 ++
+    -e --examples                  |  SHOW TOOL EXAMPLES ||
+===========================================================
+""",version=ver)
 
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
@@ -75,15 +83,16 @@ OPTIONS:
 def main():
 	parse.add_option("-H","--HASH",dest="hash",type="string",
 								help="\nHASH please !\n")
-	parse.add_option("-W","--wordlist",dest="wordlist",type="string",
+	parse.add_option("-W","-w","--wordlist",dest="wordlist",type="string",
 								help="\nWordlist File Please!\n")
-        parse.add_option("-T","--text",dest="dtext",type="string",
-							 help="Enter Some Text To Encodeing To Your Hash\n")
-	parse.add_option("-O","--output",dest="outfile",type="string",
+        parse.add_option("-T","-t","--text",dest="dtext",type="string",
+							        help="Enter Some Text To Encodeing To Your Hash\n")
+	parse.add_option("--on",'--ON',action="store_true",dest="ONC",default=False)
+	parse.add_option("-O","-o","--output",dest="outfile",type="string",
 								help="\nFile Name Please !\n")
-	parse.add_option("-v",action="store_true",dest="ShowVERSION",default=False,
+	parse.add_option("-v","-V",action="store_true",dest="ShowVERSION",default=False,
 								help="\nSHOW TOOL VERSION AND EXIT :)\n")
-	parse.add_option("-e","--examples",action="store_true",dest="ShowEXAMPLES",default=False,
+	parse.add_option("-e","-E","--examples",action="store_true",dest="ShowEXAMPLES",default=False,
 								help="\nSHOW TOOL EXAMPLES\n")
 
 	(options,args) = parse.parse_args()
@@ -180,7 +189,7 @@ def main():
 			       loop +=1
 		   else:
 			print(cor[4]+"\n[-]:"+cor[3]+"I WAS TRY ["+cor[4]+str(lens)+cor[3]+"] "+cor[3]+"Passowrd From [ "+cor[4]+wl+cor[3]+" ] Wordlist")
-			print(cor[4]+"[x!]"+cor[3]+":PASSWORD NOT FOUND IN:[ "+cor[4]+wl+cor[3]+" ] Wordlist\n"+cor[2]+"[*]"+cor[4]+":"+cor[3]+"Try Other Wordlist :) ")
+			print(cor[4]+"[x!]"+cor[3]+":PASSWORD NOT FOUND IN:[ "+cor[4]+wl+cor[3]+" ] Wordlist\n"+cor[2]+"[*]"+cor[4]+":"+cor[3]+"Try Online Cracker Options Or try Other Wordlist :) ")
 			exit()
 
 		except KeyboardInterrupt:
@@ -218,10 +227,75 @@ def main():
 
 		else:
 		   errorhash()
-		   exit()
+		   exit(1)
+	elif options.hash !=None and options.ONC:
+	      try:
+		H = options.hash
+		HASHES = [32,40,56,64,96,128]
+		if len(H) not in HASHES:
+			errorhash()
+			exit(1)
+		def check():
+		  try:
+		    ip = socket.gethostbyname('google.com')
+		    con = socket.create_connection((ip, 80), 2)
+		    return True
+		  except:
+			pass
+		  return False
+		if check() !=True:
+			print("\033[1;31m[\033[1;33m!\033[1;31m]\033[1;33m Error: Please Check Your Internet Connection \033[1;31m!!!")
+			exit(1)
+		url="http://hashtoolkit.com/reverse-hash?hash="+H
+		con = requests.get(url)
+		content = con.content
+		cracked = re.findall("<span title=\"decrypted (md5|sha1|sha224|sha256|sha384|sha512) hash\">(.*)</span>", content)
+		hashname=cracked[0][0]
+		banner()
+		print("\033[1;37m.::: \033[1;33mOnline Cracking Result \033[1;37m:::.")
+		print("\n\033[1;37m[\033[1;32m>\033[1;37m] HASH     :\033[1;32m "+H)
+		print("\033[1;37m[\033[1;32m+\033[1;37m] HashName :\033[1;32m "+hashname)
+		print("\033[1;37m[\033[1;32m~\033[1;37m] Cracked  :\033[1;32m "+cracked[0][1])
+	      except:
+                H = options.hash
+                HASHES = [32,40,56,64,96,128]
+                if len(H) not in HASHES:
+                        errorhash()
+                        exit(1)
+                def check():
+                  try:
+                    ip = socket.gethostbyname('google.com')
+                    con = socket.create_connection((ip, 80), 2)
+                    return True
+                  except:
+                        pass
+                  return False
+                if check() !=True:
+                        print("\033[1;31m[\033[1;33m!\033[1;31m]\033[1;33m Error: Please Check Your Internet Connection \033[1;31m!!!")
+                        exit(1)
+		if len(H) ==HASHES[0]:
+			name = "MD5"
+		elif len(H) ==HASHES[1]:
+			name = "SHA1"
+                elif len(H) ==HASHES[2]:
+                        name = "SHA224"
+                elif len(H) ==HASHES[3]:
+                        name = "SHA256"
+                elif len(H) ==HASHES[4]:
+                        name = "SHA384"
+                elif len(H) ==HASHES[5]:
+                        name = "SHA512"
+		banner()
+                print("\033[1;37m .::: \033[1;33mOnline Cracking Result \033[1;37m:::.")
+                print("\n\033[1;37m[\033[1;32m>\033[1;37m] HASH     :\033[1;32m "+H)
+                print("\033[1;37m[\033[1;32m+\033[1;37m] HashName :\033[1;32m "+name)
+		try:
+                 print("\033[1;37m[\033[1;32m~\033[1;37m] Cracked  :\033[1;32m "+onc(H))
+		except:
+		  print("\n\033[1;31m[\033[1;33m!\033[1;31m]\033[1;33m Error: Cracking Failed \033[1;31m !!!\n\033[1;37m[\033[1;32m*\033[1;37m] Try Brute Force Attack With Wordlist :)")
         else:
 		print(parse.usage)
-		exit()
+		exit(1)
 
 if __name__=='__main__':
 	main()
@@ -234,4 +308,3 @@ if __name__=='__main__':
 #This Tool by Oseid Aldary
 #Have a nice day :)
 #GoodBye
-

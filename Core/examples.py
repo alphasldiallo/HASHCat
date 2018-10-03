@@ -7,33 +7,27 @@ except:
 def examples():
 	banner()
 	print(cor[5]+"""\n
-EXAMPLES:
+\033[1;33mEXAMPLES:
 
-#[MD5]:
-           ./HASHCat.py -H 5d41402abc4b2a76b9719d911017c592 -W /root/Desktop/wordlist.txt
-#[SHA1]:
-      	   ./HASHCat.py -H aaf4c61ddcc5e8a2dabede0f3b482cd9aea9434d -W /root/Desktop/wordlist.txt
-#[SHA224]:
-	   ./HASHCat.py -H ea09ae9cc6768c50fcee903ed054556e5bfc8347907f12598aa24193 -W /root/Desktop/wordlist.txt
-#[SHA256]:
-	   ./HASHCat.py -H 2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824 -W /root/Desktop/wordlist.txt
-#[SHA384]:
-	   ./HASHCat.py -H 9b71d224bd62f3785d96d46ad3ea3d73319bfbc2890caadae2dff72519673ca72323c3d99ba5c1c5d-..... -W /root/Desktop/wordlist.txt
-#[SHA512]: 
-           ./HASHCat.py -H 9b71d224bd62f3785d96d46ad3ea3d73319bfbc2890caadae2dff72519673ca72323c3d99ba5c11d7c7acc6e.... -W /root/Desktop/wordlist.txt
-------------------------------------------------------------------------------------------------------------------------------------------------
-
-Note: Note: if you like save the crack info try [ -O ] and set file name to save info in the file
-
-ex:
-   ./HASHCat.py -H 5d41402abc4b2a76b9719d911017c592 -W /root/Desktop/wordlist.txt -O file.txt 
+#[MD5]:\033[1;37m ./HASHCat.py -H 5d41402abc4b2a76b9719d911017c592 -W /root/Desktop/wordlist.txt\033[1;32m
+======================================================================================\033[1;33m
+#[SHA1]:\033[1;37m ./HASHCat.py -H aaf4c61ddcc5e8a2dabede0f3b482cd9aea9434d -W /root/Desktop/wordlist.txt
+===============================================================================================\033[1;33m
+#[SHA224]: \033[1;37m./HASHCat.py -H ea09ae9cc6768c50fcee903ed054556e5bfc8347907f12598aa24193 -W /root/wordlist.txt\033[1;32m
+=========================================================================================================\033[1;33m
+#[SHA256]:\033[1;37m ./HASHCat.py -H 2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e7304-... -W /root/wordlist.txt\033[1;32m
+=========================================================================================================\033[1;33m
+#[SHA384]:\033[1;37m ./HASHCat.py -H 9b71d224bd62f3785d96d46ad3ea3df72519673ca72323c3d99d-... -W /root/wordlist.txt\033[1;32m
+=========================================================================================================\033[1;33m
+#[SHA512]:\033[1;37m ./HASHCat.py -H 9b71d224bd62f3785d96d46ad3ea3d73319bfbc2890caadae2df-... -W /root/wordlist.txt\033[1;32m
+=========================================================================================================\033[1;33m
 
 
-------------------------------------------------------------------------------------------------------------------------------------------------
+#[Save Result]:\033[1;37m ./HASHCat.py -H aaf4c61ddcc5e8a2dabede0f3b482cd9aea9434d -W /root/wordlist.txt -O res.txt\033[1;32m
+=========================================================================================================\033[1;33m
 
-To Create Some Hash
 
-./HASHCat.py -H md5 -T Python
-
+#[Try To Crack Online]:\033[1;37m ./HASHCat.py -H aaf4c61ddcc5e8a2dabede0f3b482cd9aea9434d --ON\033[1;32m
+=========================================================================================================
 """)
 
