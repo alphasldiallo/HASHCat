@@ -302,6 +302,7 @@ def main():
                  print("\033[1;37m[\033[1;32m~\033[1;37m] Cracked  :\033[1;32m "+onc(H))
 		except:
 		  print("\n\033[1;31m[\033[1;33m!\033[1;31m]\033[1;33m Error: Cracking Failed \033[1;31m !!!\n\033[1;37m[\033[1;32m*\033[1;37m] Try Brute Force Attack With Wordlist :)")
+
         else:
 		print(parse.usage)
 		exit(1)
