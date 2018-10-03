@@ -15,7 +15,7 @@
   
    * Create-HASH:
    
-         ![create-hash](https://user-images.githubusercontent.com/29546157/46437156-3249ba00-c74a-11e8-9bab-a7e26a175b9d.png)
+       ![create-hash](https://user-images.githubusercontent.com/29546157/46437156-3249ba00-c74a-11e8-9bab-a7e26a175b9d.png)
          
 # HOW YOU INSTALL THE TOOL:
 
