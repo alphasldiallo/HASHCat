@@ -41,7 +41,7 @@ def errorhash():									      #
 --------------------------------------------->SHA256
 --------------------------------------------->SHA384
 --------------------------------------------->SHA512 """)										      #
-											      #
+     pass		         							      #
 ###############################################################################################
 
 #----------------------------------- DefaultBanner -----------------------------------#
@@ -239,12 +239,13 @@ def main():
 	           print("\n\033[1;31m[\033[1;33m!\033[1;31m]\033[1;33m Error: [\033[1;32m Json \033[1;37mLibrary\033[1;33m ] Is Not Exist \033[1;31m!!!")
 	           print("\033[1;32m[\033[1;37m*\033[1;32m]\033[1;37m Please Install It Using This \033[1;33mCommand: \033[1;37mpip install simplejson")
 		   exit(1)
+	      test = 0
 	      try:
 		H = options.hash
 		HASHES = [32,40,56,64,96,128]
 		if len(H) not in HASHES:
 			errorhash()
-			exit(1)
+			test = test +1
 		def check():
 		  try:
 		    ip = socket.gethostbyname('google.com')
@@ -267,11 +268,9 @@ def main():
 		print("\033[1;37m[\033[1;32m+\033[1;37m] HashName :\033[1;32m "+hashname)
 		print("\033[1;37m[\033[1;32m~\033[1;37m] Cracked  :\033[1;32m "+cracked[0][1])
 	      except:
+		if test == 1:
+		   exit(1)
                 H = options.hash
-                HASHES = [32,40,56,64,96,128]
-                if len(H) not in HASHES:
-                        errorhash()
-                        exit(1)
                 def check():
                   try:
                     ip = socket.gethostbyname('google.com')
