@@ -1,4 +1,4 @@
-# HASHCat,V1.0
+# HASHCat,V2.0
 
 # A Python  Script For BrtuForce Attack On Multi HASHES YOU CAN BRTU-FORCE ATTACK ON THIS HASHES [ MD5, SHA1, SHA224, SHA256, SHA384, SHA512 ] Using this Script :)
 
